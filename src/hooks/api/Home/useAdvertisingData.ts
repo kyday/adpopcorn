@@ -1,5 +1,7 @@
-import { useMutation, UseMutationResult } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+
 import { instance } from "../../../libs/client";
+import { PaymentType } from "../../../types/paymentType";
 
 export type AdvertisingDataMutationResponse = {
   search_year: number;
@@ -7,14 +9,16 @@ export type AdvertisingDataMutationResponse = {
 };
 
 export const useAdvertisingData = () => {
-  return useMutation({
+  return useMutation<PaymentType, unknown, AdvertisingDataMutationResponse>({
     mutationFn: async (payload: AdvertisingDataMutationResponse) => {
       const { data } = await instance.post(
         "/ap/v1/partners/demoreport/GetDemoData",
         payload
       );
 
-      return data;
+      return data?.Payment;
     },
+
+    mutationKey: ["advertisingData"],
   });
 };
