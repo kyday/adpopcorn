@@ -4,7 +4,6 @@ import Loading from "../../components/Loading/Loading";
 import StyledTable from "../../components/Table/StyledTable";
 import StyledComposedChart from "../../components/StyledComposedChart/StyledComposedChart";
 import Box from "../../components/Box/Box";
-
 import { theme } from "../../styles/theme";
 import { useAdvertisingData } from "../../hooks/api/Home/useAdvertisingData";
 import { extractChartData } from "../../utils/charData/data";
@@ -29,8 +28,6 @@ export default function Home() {
     handleMutate();
   }, [mutate, nowYear.date]);
 
-  console.log(data?.Monthly[0]?.App[0]);
-
   return (
     <DashboardContainer>
       <MainContent>
@@ -41,7 +38,7 @@ export default function Home() {
         </BoxContainer>
 
         <BoxContainer>
-          {TitleData.map((item, index) => {
+          {TitleData.map((item) => {
             return (
               <Box
                 key={item.id}

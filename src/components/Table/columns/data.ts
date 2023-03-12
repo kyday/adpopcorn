@@ -35,3 +35,30 @@ export const tableColumns: ColumnsType<DataType> = [
     },
   },
 ];
+
+//ExpandedRowRender Columns
+export const expandedRowColumns = [
+  { title: "이름", dataIndex: "CampaignName", key: "CampaignName" },
+  {
+    title: "캠페인 참여 수익",
+    dataIndex: "Revenue",
+    key: "Revenue",
+    render: (text: string) => {
+      return `${text.toLocaleString()} 원`;
+    },
+  },
+
+  {
+    title: "캠페인 참여자 수",
+    dataIndex: "Complete",
+    key: "Complete",
+    render: (text: string) => {
+      return `${text} 건`;
+    },
+  },
+  {
+    title: "수수료",
+    dataIndex: "Commission",
+    key: "Commission",
+  },
+];
